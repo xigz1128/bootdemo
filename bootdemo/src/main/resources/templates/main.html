@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>首页</title>
-    <script src="http://cdn.staticfile.org/jquery/3.6.0/jquery.js"></script>
-    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
     <style>
         *{
             padding:0;
@@ -11,69 +10,38 @@
         }
         .wrapper{
             width:100%;
-            height:800px;
+            height:100%;
         }
-        .main{
-            width: 100%;
+        .body{
+            width: 10%;
             height:640px;
             position: relative;
         }
         .content{
             width: 90%;
             height: 100%;
-            background-color: cyan;
             position: absolute;
             top: 0px;
             left: 10%;
         }
     </style>
-    <script>
-        $(function(){
-            $("#div1").on("click",".father",function () {
-                var flag = $(this).nextUntil("li").is(":hidden");
-                if (flag) {
-                    //show() 方法: 使隐藏的变为显示
-                    $(this).nextUntil("li").toggle();
-                    $("#fimg1").css("transform", "rotate(0deg)");
-                } else {
-                    $(this).nextUntil("li").hide();
-                    $("#fimg1").css("transform", "rotate(270deg)");
-                }
-            });
-            // index.jsp页面一加载，就会请求后台获取菜单
-            $.ajax({
-                url:'tree/getAllTrees',
-                success:function(data){//data服务器返回的数据
-                    firsul=$("<ul id=\"first\"></ul>");
-                    $.each(data,function(index,tree){
-                        if(tree.isparent == "true"){
-                            fatherli=$("<li class=\"father\"></li>");
-                            fatherA=$("<a href=\"javascript:void(0)\">"+tree.title+"</a>");
-                            fatherli.append(fatherA);
-                            firsul.append(fatherli);
-                        }else{
-                            secondul=$("<ul class=\"second\"></ul>");
-                            sonli=$("<li class=\"son\"></li>");
-                            sonA=$("<a target=\"right\" href="+tree.url+">"+tree.title+"</a>");
-                            sonli.append(sonA);
-                            secondul.append(sonli);
-                            firsul.append(secondul);
-                        }
-                    })
-                    $("#div1").append(firsul);//渲染完毕
-                }
-            });
-        })
-    </script>
+    <script src="http://cdn.staticfile.org/jquery/3.6.0/jquery.js"></script>
 </head>
 <body>
 <div class="wrapper">
-    <div class="main">
+    <div class="header">
+    </div>
+    <div class="body">
         <div id="div1">
+            <ul id="nav">
+                <th:block th:include="public::menu2(${userTreeList})"/>
+            </ul>
         </div>
-        <div class="content">
-            <iframe src="" width="100%" height="100%" name="right" frameborder="0"></iframe>
-        </div>
+    </div>
+    <div class="content">
+        <iframe src="" width="100%" height="100%" name="right" frameborder="0"></iframe>
+    </div>
+    <div class="footer">
     </div>
 </div>
 </body>

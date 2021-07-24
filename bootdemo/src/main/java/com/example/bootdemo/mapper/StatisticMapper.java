@@ -1,11 +1,11 @@
 package com.example.bootdemo.mapper;
 
-import com.example.bootdemo.bean.Tree;
+import com.example.bootdemo.bean.Statistic;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface TreeMapper {
-    List<Tree> getTreeByRole(String role_id);
+public interface StatisticMapper {
+List<Statistic> getOrder();
 }

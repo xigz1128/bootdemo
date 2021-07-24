@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+修改餐桌信息<br>
+<form action="/table/Updata.do" method="get">
+    <input type="hidden" id="table_id" name="table_id" th:value="${table_id}">
+    <label for="table_norm">餐桌规模:</label><input type="text" id="table_norm" name="table_norm" th:value="${table_norm}"><br>
+    <label for="table_site">餐桌位置:</label><input type="text" id="table_site" name="table_site" th:value="${table_site}"><br>
+    <input type="submit" th:value="修改">
+</form>
+</body>
+</html>

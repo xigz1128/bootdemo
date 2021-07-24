@@ -14,7 +14,8 @@ public class TreeServiceimpl implements ITreeService {
     private TreeMapper treeMapper;
 
     @Override
-    public List<Tree> getAllTrees() {
-        return treeMapper.getAllTrees();
+    public List<Tree> getTreeByRole(String role) {
+        return treeMapper.getTreeByRole(role);
     }
+
 }

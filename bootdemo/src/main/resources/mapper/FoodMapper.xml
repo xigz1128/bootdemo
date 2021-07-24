@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bootdemo.mapper.FoodMapper">
+
+    <select id="getAllFood" resultType="Food">
+    select * from foods
+    </select>
+
+    <select id="getFoodById" resultType="Food" parameterType="String">
+    select * from foods
+    <where>
+        <if test="food_id !=null and food_id!=''">
+           OR food_id LIKE '%${food}%'
+        </if>
+        <if test="food_name !=null and food_name!=''">
+           OR food_name LIKE '%${food}%'
+        </if>
+        <if test="inprice !=null and inprice!=''">
+           OR inprice LIKE '%${food}%'
+        </if>
+        <if test="stock !=null and stock!=''">
+            OR stock LIKE '%${food}%'
+        </if>
+    </where>
+    </select>
+
+    <update id="updateFood" parameterType="Food">
+        update foods set food_name=#{food_name},inprice=#{inprice},stock=#{stock} where food_id=#{food_id}
+    </update>
+
+    <insert id="addFood" parameterType="Food">
+        insert into foods values (#{food_id},#{food_name},#{inprice},#{stock})
+    </insert>
+
+    <delete id="deleteFood"  parameterType="String" >
+        delete from foods where food_id=#{id}
+    </delete>
+
+</mapper>

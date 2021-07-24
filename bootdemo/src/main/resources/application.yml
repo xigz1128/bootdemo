@@ -10,3 +10,7 @@ spring:
 mybatis:
   type-aliases-package: com.example.bootdemo.bean
   mapper-locations: classpath:mapper/*Mapper.xml
+
+logging:
+  level:
+    com.example.bootdemo.mapper: DEBUG

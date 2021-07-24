@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bootdemo.mapper.StatisticMapper">
+    <select id="getOrder" resultType="Statistic">
+        SELECT d.dish_id,d.dish_name,d.price,COUNT(od.amount) amount,COUNT(od.amount)*d.price total
+FROM order_dishes od,dishes d
+WHERE od.dish_id = d.dish_id
+GROUP BY od.dish_id
+
+    </select>
+</mapper>

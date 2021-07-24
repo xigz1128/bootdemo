@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>食物首页</title>
+</head>
+<body>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <h2>
+        <a class="btn btn-sm btn-success" th:href="@{/addFood}">添加新食材</a>
+    </h2>
+
+    <form action="/selectFood" method="post">
+        <div class="form-group">
+            <input  type="text" name="food" class="form-control" placeholder="f0001">
+            <button type="submit" class="btn btn-primary">查询</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>食材编号</th>
+                <th>食材名称</th>
+                <th>进货价</th>
+                <th>库存</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fl:${foodList}">
+                <td th:text="${fl.getFood_id()}"></td>
+                <td th:text="${fl.getFood_name()}"></td>
+                <td th:text="${fl.getInprice()}"></td>
+                <td th:text="${fl.getStock()}"></td>
+                <td>
+                    <a class="btn btn-sm btn-primary" th:href="@{'/toUpdateFood?id='+${fl.getFood_id()}}" >修改</a>
+                    <a  class="btn btn-sm btn-danger" th:href="@{'/deleteFood?id='+${fl.getFood_id()}}">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

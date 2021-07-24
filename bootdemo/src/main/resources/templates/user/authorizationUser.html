@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+
+<body>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <form th:action="@{/authorizationUser}" method="post">
+        <div class="form-group">
+            <label>UserId</label>
+            <input th:value="${user.getUser_id()}" type="text" name="user_id" class="form-control" placeholder="kuangshen">
+        </div>
+        <div class="form-group">
+            <label>RoleId</label>
+            <select class="form-control" name="role_id">
+                <option th:each="ur:${role}"
+                        th:text="${ur.getRole_name()}" th:value="${ur.getRole_id()}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">授权</button>
+    </form>
+</main>
+</body>
+</html>

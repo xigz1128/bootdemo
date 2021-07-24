@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bootdemo.mapper.CartMapper">
+    <select id="getCartByUser" parameterType="String" resultMap="cartMap">
+        SELECT c.*,d.* FROM cart c,dishes d  WHERE c.dish_id = d.dish_id AND c.user_id = #{user_id};
+    </select>
+    <resultMap id="cartMap" type="Cart">
+        <id property="user_id" column="user_id"></id>
+        <id property="dish_id" column="dish_id"></id>
+        <result property="amount" column="amount"></result>
+        <collection property="dishes" ofType="Dishes">
+            <id property="dish_id" column="dish_id"></id>
+            <result property="dish_name" column="dish_name"></result>
+            <result property="price" column="price"></result>
+            <result property="type" column="type"></result>
+            <result property="sketch" column="sketch"></result>
+        </collection>
+    </resultMap>
+
+    <delete id="deleteDish" parameterType="string">
+        DELETE FROM cart WHERE user_id=#{user_id} and dish_id = #{dish_id}
+    </delete>
+
+    <update id="updataAmount" parameterType="Cartvo">
+        update cart set amount = #{amount} where user_id = #{user_id} and dish_id = #{dish_id}
+    </update>
+
+    <select id="addCart" resultType="Cart" parameterType="String">
+        INSERT INTO cart VALUES (#{user_id},#{dish_id},1)
+    </select>
+</mapper>
+

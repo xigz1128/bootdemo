@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>餐品名称</th>
+            <th>餐品价格</th>
+            <th>购买数量</th>
+            <th>餐品类型</th>
+            <th>餐品简介</th>
+        </tr>
+        <tr th:each="cart,Stat :${cartList}">
+            <td th:text="${cart.dishes.dish_name}"></td>
+            <td th:text="${cart.dishes.price}"></td>
+            <td th:text="${cart.amount}"></td>
+            <td th:text="${cart.dishes.type}"></td>
+            <td th:text="${cart.dishes.sketch}"></td>
+            <td th:text="${cart.dishes.dish_id}" hidden></td>
+            <td><a th:href="@{'/cart/toAdd.do?user_id='+${session.user.user_id}+'&dish_id='+${cart.dishes.dish_id}+'&amount='+${cart.amount}}" th:text="增加"></a></td>
+            <td><a th:href="@{'/cart/toReduce.do?user_id='+${session.user.user_id}+'&dish_id='+${cart.dishes.dish_id}+'&amount='+${cart.amount}}" th:text="减少"></a></td>
+            <td><a th:href="@{'/cart/toDelete.do?user_id='+${session.user.user_id}+'&dish_id='+${cart.dishes.dish_id}}" th:text="删除"></a></td>
+        </tr>
+    </table>
+</body>
+</html>

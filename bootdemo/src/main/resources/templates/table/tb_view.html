@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>序号</th>
+        <th>餐桌编号</th>
+        <th>餐桌规格</th>
+        <th>餐桌位置</th>
+    </tr>
+    <tr  th:each="table,Stat : ${tableList}">
+        <td th:text="${Stat.index+1}"></td>
+        <td th:text="${table.table_id}"></td>
+        <td th:text="${table.table_norm}"></td>
+        <td th:text="${table.table_site}"></td>
+        <td ><a th:href="@{'/table/toUpdata.do?table_id='+${table.table_id}+'&table_norm='+${table.table_norm}+'&table_site='+${table.table_site}}"  th:text="${'修改'}"></a></td>
+    </tr>
+</table>
+</body>
+</html>

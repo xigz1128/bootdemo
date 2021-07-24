@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bootdemo.mapper.User_RoleMapper">
+
+    <select id="checkRole" parameterType="String" resultType="User_Role">
+        SELECT * FROM user_role WHERE user_id = #{user_id} and role_id=#{role_id}
+    </select>
+
+    <delete id="deleteUser_RoleById" parameterType="String" >
+        delete from user_role where user_id=#{id}
+	</delete>
+
+    <insert id="addUser_Role" parameterType="string">
+		insert into user_role values (#{user_id},#{role_id})
+	</insert>
+</mapper>

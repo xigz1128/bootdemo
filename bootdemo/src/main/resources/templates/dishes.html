@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>小小帅餐馆</title>
+    <script>
+        function myFunction()
+        {
+            alert("已加入购物车");
+        }
+    </script>
+</head>
+<body>
+
+<form action="/Dish/content.do">
+    <input type="text" name="content">
+    <input type="submit" >
+</form>
+
+<table>
+    <tr>
+        <th>编号</th>
+        <th>菜名</th>
+        <th>价格</th>
+        <th>类型</th>
+        <th>描述</th>
+    </tr>
+    <tr th:each="dishes,Stat:${dishesList}">
+        <td th:text="${dishes.dish_id}"></td>
+        <td th:text="${dishes.dish_name}"></td>
+        <td th:text="${dishes.price}"></td>
+        <td th:text="${dishes.type}"></td>
+        <td th:text="${dishes.sketch}"></td>
+        <td>
+            <a th:href="@{'/cart/view?dish_id='+${dishes.dish_id}}" th:onclick="myFunction()">加入购物车</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

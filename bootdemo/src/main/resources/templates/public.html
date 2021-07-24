@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="menu2(menus)">
+    <th:block th:each="tree: ${menus}">
+        <li>
+            <a th:href="${tree.url}" th:text="${tree.title}" target="right" ></a>
+            <ul>
+                <th:block th:unless="${#lists.isEmpty(tree.childTrees)}" th:include="this::menu2(${tree.childTrees})"/>
+            </ul>
+        </li>
+    </th:block>
+</th:block>
+</body>
+</html>

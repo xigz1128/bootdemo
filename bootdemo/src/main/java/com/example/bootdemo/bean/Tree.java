@@ -1,5 +1,7 @@
 package com.example.bootdemo.bean;
 
+import java.util.List;
+
 public class Tree {
     private String tree_id;
     private String parent_id;
@@ -10,12 +12,31 @@ public class Tree {
     public Tree() {
     }
 
-    public Tree(String tree_id, String parent_id, String title, String url, String isparent) {
+    private List<Tree> ChildTrees;
+
+    public Tree(String tree_id, String parent_id, String title, String url, String isparent, List<Tree> childTrees) {
         this.tree_id = tree_id;
         this.parent_id = parent_id;
         this.title = title;
         this.url = url;
         this.isparent = isparent;
+        ChildTrees = childTrees;
+    }
+
+    public String getIsparent() {
+        return isparent;
+    }
+
+    public void setIsparent(String isparent) {
+        this.isparent = isparent;
+    }
+
+    public List<Tree> getChildTrees() {
+        return ChildTrees;
+    }
+
+    public void setChildTrees(List<Tree> childTrees) {
+        ChildTrees = childTrees;
     }
 
     public String getTree_id() {
@@ -48,13 +69,5 @@ public class Tree {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getIsparent() {
-        return isparent;
-    }
-
-    public void setIsparent(String isparent) {
-        this.isparent = isparent;
     }
 }
