@@ -40,4 +40,10 @@ public class FoodServiceImpl implements IFoodService {
         foodMapper.deleteFood(id);
     }
 
+    @Override
+    public Food getFood(String id) {
+        Food food = foodMapper.getFood(id);
+        return food;
+    }
+
 }

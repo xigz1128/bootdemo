@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//at.alicdn.com/t/font_2710957_ksgk78g2h1a.js"></script>
+    <link th:href="@{/css/login/register.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="wrap">
+
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-zhuce"></use>
+    </svg>
+
+    <span th:text="${data}"></span>
+
+    <form id="commentform" method="get" action="/RegisterSuccess">
+        <p class="input">
+            <label>用 户 ID</label><input type="text" name="user_id" placeholder="请输入用户ID">
+        </p>
+        <p class="input">
+            <label>用 户 名</label><input type="text" name="user_name" placeholder="请输入用户名">
+        </p>
+        <p class="input">
+            <label>真实姓名</label><input type="text" name="realname" placeholder="请输入真实姓名">
+        </p>
+        <p class="input">
+            <label>电话号码</label><input type="text" name="phone" placeholder="请输入电话号码">
+        </p>
+        <p class="input">
+            <label>地 址</label><input type="text" name="address" placeholder="请输入地址">
+        </p>
+        <p class="input">
+            <label>密 码</label><input type="text" name="password" placeholder="请输入密码">
+        </p>
+        <p class="input">
+            <label>确认密码</label><input type="text" name="password2" placeholder="请再次输入密码">
+        </p>
+        <p class="input">
+            <input name="role_id" value="r3000" type="hidden" required/><br><br>
+        </p>
+        <p><input type="submit" value="注册" id="submit" name="submit"></p>
+    </form>
+
+    <form id="commentform2" method="get" action="toLogin">
+        <p><input type="submit" value="登录" id="submit2" name="submit2"></p>
+    </form>
+
+</div>
+</body>
+</html>
