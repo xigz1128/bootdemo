@@ -37,6 +37,7 @@ public class FoodController {
         model.addAttribute("food",food);
         return "food/updateFood";
     }
+
     //提交修改完毕的信息进数据库
     @PostMapping("updateFood")
     public String updateFood(Food food,Model model){
