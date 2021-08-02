@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bootdemo.mapper.Dish_FoodMapper">
 
-    <delete id="deleteDF" parameterType="String" >
-
+    <delete id="deleteDish_Food" parameterType="String">
+        delete from dish_food where food_id=#{id}
     </delete>
 
 </mapper>

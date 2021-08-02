@@ -2,5 +2,6 @@ package com.example.bootdemo.service;
 
 public interface IDish_FoodService {
 
-    void deleteDF(String id);
+    //删除
+    void deleteDish_Food(String id);
 }

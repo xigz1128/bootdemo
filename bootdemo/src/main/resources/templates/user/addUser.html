@@ -1,75 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Dashboard Template for Bootstrap</title>
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/user/addUser.css}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
-
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
 </head>
 
-
 <body>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+<main>
+    <div class="Content-Main">
     <form th:action="@{/addUser}" method="post">
-        <div class="form-group">
+        <h1>个人信息</h1>
+        <span class="text1">请在文本框中完善您的个人信息：</span>
+        <span style="font-size: 16px;color: red;" th:text="${data}"></span>
+        <p>
+        <div>
             <label>User_Id</label>
             <input type="text" name="user_id" class="form-control" placeholder="u1001">
         </div>
-        <div class="form-group">
+
+        <div>
             <label>User_Name</label>
             <input type="text" name="user_name" class="form-control" placeholder="luxin">
         </div>
-        <div class="form-group">
+
+        <div >
             <label>Password</label>
             <input type="text" name="password" class="form-control" placeholder="123456">
         </div>
-        <div class="form-group">
+
+        <div >
             <label>RealName</label>
             <input type="text" name="realname" class="form-control" placeholder="陆欣">
         </div>
-        <div class="form-group">
+
+        <div >
             <label>Phone</label>
             <input type="text" name="phone" class="form-control" placeholder="2972127">
         </div>
-        <div class="form-group">
+
+        <div>
             <label>Address</label>
             <input type="text"  name="address" class="form-control" placeholder="河池">
         </div>
-        <button type="submit" class="btn btn-primary">添加</button>
+
+        <button type="submit">添加</button>
+
     </form>
+
+        <form th:action="@{/userList}" method="get">
+            <button class="btn" type="submit">返回主界面</button>
+        </form>
+
+    </div>
+
 </main>
+
 </body>
+
 </html>

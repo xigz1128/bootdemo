@@ -1,0 +1,45 @@
+
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background: whitesmoke;
+    background-size: cover;
+}
+
+svg{
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+p{
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    tab-index: 10px;
+}
+
+button{
+    padding: 8px 24px 8px 24px;
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 9999;
+    border: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px  #3D3D3D;
+    -moz-box-shadow: 1px 1px 1px  #3D3D3D;
+    -webkit-box-shadow: 1px 1px 1px  #3D3D3D;
+    color: #3D3D3D;
+    background: #DFDFDF;
+}
+button:hover{
+    color:  #333;
+    background-color:  #EBEBEB ;
+}

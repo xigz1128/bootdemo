@@ -10,4 +10,6 @@ public interface ICartService {
     void deleteDish(String userid, String dish_id);
     void updataAmount(Cartvo cartvo);
     List<Cart> addCart(String user_id,String content);
+
+    void deleteCartById(String id);
 }

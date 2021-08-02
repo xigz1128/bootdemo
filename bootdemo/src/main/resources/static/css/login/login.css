@@ -1,0 +1,83 @@
+body{
+    background-size: cover;
+}
+
+#wrap{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#wrap p{
+    width: 400px;
+    display: flex;
+    margin-bottom: 50px;
+    background: #FFFFFF;
+    font-size: 16px;
+    border-radius: 30px;
+    line-height: 35px;
+    position: relative;
+}
+#wrap label{
+    width: 100px;
+    background: #FFE477;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 30px;
+}
+#wrap input {
+    width: 100%;
+    border: black;
+    font-size: 16px;
+    color: black;
+    padding-left: 10px;
+    border-radius: 30px;
+    outline: none;
+}
+input::placeholder{
+    color: #3D3D3D;
+    font-size: 16px;
+}
+#wrap button{
+    width: 100px;
+    height: 40px;
+    margin: 0 10px;
+    background: #FFE477;
+    font-size: 20px;
+    color: #FFFFFF;
+    border-radius: 30px;
+    outline: none;
+    text-align: center;
+}
+
+#wrap button:nth-child(2){
+    background: bisque;
+}
+span{
+    font-size: 10px;
+    color: red;
+}
+h2{
+
+}
+#btn {
+    position: absolute;
+    left: 53%;
+    bottom: 15%;
+    cursor: pointer;
+}
+#btn2 {
+    position: absolute;
+    left: 38%;
+    bottom: 15%;
+    cursor: pointer;
+}
+.icon3 {
+    width: 8em;
+    height: 8em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}

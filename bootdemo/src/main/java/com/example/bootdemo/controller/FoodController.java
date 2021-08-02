@@ -31,10 +31,10 @@ public class FoodController {
 
     //修改食物列表信息,首先要去到修改信息的界面
     @GetMapping("toUpdateFood")
-    public String toUpdateFood(String food,Model model){
+    public String toUpdateFood(String id,Model model){
         //获取改id下的食物信息
-        List<Food> Food = foodService.getFoodById(food);
-        model.addAttribute("food",Food);
+        Food food = foodService.getFood(id);
+        model.addAttribute("food",food);
         return "food/updateFood";
     }
 
@@ -44,8 +44,9 @@ public class FoodController {
         //修改食物信息
         foodService.updateFood(food);
         //修改好食物信息之后再次获取当前Food表中的信息
-        List<Food> foods = foodService.getAllFood();
-        model.addAttribute("foods",foods);
+        //List<Food> foodList = foodService.getAllFood();
+        //model.addAttribute("foodList",foodList);
+        //return "food/foodList";
         return "redirect:/stock/view.do";
     }
 
@@ -76,17 +77,17 @@ public class FoodController {
     //删除一条食物信息
     @GetMapping("deleteFood")
     public String deleteFood(String id){
-        dish_foodService.deleteDF(id);
+        dish_foodService.deleteDish_Food(id);
         foodService.deleteFood(id);
         return "redirect:/stock/view.do";
     }
 
-    //通过id查询食物信息
+    //通过"food"查询食物信息
     @PostMapping("selectFood")
-    public String getFoodById(String food,HttpServletRequest request){
+    public String getFoodById(String food,Model model){
         System.out.println(food);
-        List<Food> Food= foodService.getFoodById(food);
-        request.setAttribute("food",Food);
+        List<Food> foods= foodService.getFoodById(food);
+        model.addAttribute("food",foods);
         return "food/selectFood";
     }
 

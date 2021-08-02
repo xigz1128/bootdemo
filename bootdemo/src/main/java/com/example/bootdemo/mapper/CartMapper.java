@@ -14,4 +14,7 @@ public interface CartMapper {
     void deleteDish(String user_id,String dish_id);
     void updataAmount(Cartvo cartvo);
     List<Cart> addCart(String user_id,String dish_id);
+
+    void deleteCartById(String id);
+
 }

@@ -20,10 +20,14 @@ public class UserServiceimpl implements IUserService {
         return user;
     }
 
-    /*//注册一个用户
-    public void add(String user_id,String password) {
-        userMapper.add(user_id,password);
-    }*/
+    /*
+    //注册一个用户
+    @Override
+    public void add(User user) {
+        userMapper.add(user);
+    }
+
+     */
 
     //查询所有用户信息
     @Override
@@ -32,11 +36,17 @@ public class UserServiceimpl implements IUserService {
         return userList;
     }
 
-    //通过id查询用户信息
     @Override
     public User getUserById(String id) {
-        User user=userMapper.getUserById(id);
+        User user = userMapper.getUserById(id);
         return user;
+    }
+
+    //通过id查询用户信息
+    @Override
+    public List<User> getUserByUser(String user){
+        List<User> userList = userMapper.getUserByUser(user);
+        return userList;
     }
 
     // 增加一个用户
