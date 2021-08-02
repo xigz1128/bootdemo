@@ -1,76 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Dashboard Template for Bootstrap</title>
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/user/selectUser.css}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
-
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
 </head>
 
 
 <body>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
+<main>
+        <div class="Content-Main">
+            <h1>个人信息</h1>
+            <span class="text1">您的个人信息如下：</span>
+            <p>
+        <table>
             <thead>
             <tr>
-                <th>user_id</th>
-                <th>user_name</th>
-                <th>password</th>
-                <th>realname</th>
-                <th>phone</th>
-                <th>address</th>
+                <th>用户ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>真是姓名</th>
+                <th>电话号码</th>
+                <th>现居地址</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td th:text="${user.getUser_id()}"></td>
-                <td th:text="${user.getUser_name()}"></td>
-                <td th:text="${user.getPassword()}"></td>
-                <td th:text="${user.getRealname()}"></td>
-                <td th:text="${user.getPhone()}"></td>
-                <td th:text="${user.getAddress()}"></td>
+            <tr th:each="u:${user}">
+                <td th:text="${u.getUser_id()}"></td>
+                <td th:text="${u.getUser_name()}"></td>
+                <td th:text="${u.getPassword()}"></td>
+                <td th:text="${u.getRealname()}"></td>
+                <td th:text="${u.getPhone()}"></td>
+                <td th:text="${u.getAddress()}"></td>
                 <td>
-                    <a class="btn btn-sm btn-primary" th:href="@{'/toUpdateUser?id='+${user.getUser_id()}}" >修改</a>
-                    <a  class="btn btn-sm btn-danger" th:href="@{'/deleteUser?id='+${user.getUser_id()}}">删除</a>
+                    <a  th:href="@{'/toUpdateUser?id='+${u.getUser_id()}}" >修改</a>
+                    <a  th:href="@{'/deleteUser?id='+${u.getUser_id()}}">删除</a>
+                    <a  th:href="@{'/toAuthorizationUser?id='+${u.getUser_id()}}">用户授权</a>
                 </td>
             </tr>
             </tbody>
         </table>
+
+            <form th:action="@{/userList}" method="get">
+                <button type="submit">返回主界面</button>
+            </form>
+
     </div>
 </main>
 </body>

@@ -43,6 +43,7 @@ public class CartServiceimpl   implements ICartService {
     }
 
     @Override
+
     public List<Cart> addCarts(String user_id,String dish_id) {
 
         cartMapper.addCarts(user_id,dish_id);
@@ -101,6 +102,7 @@ public class CartServiceimpl   implements ICartService {
     }
 
 
-
-
+    public void deleteCartById(String id) {
+        cartMapper.deleteCartById(id);
+    }
 }

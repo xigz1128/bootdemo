@@ -1,0 +1,106 @@
+
+body{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background: whitesmoke;
+    background-size: cover;
+}
+
+.container{
+    width: 300px;
+    height: 30px;
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.search{
+    /*background: hsl(5, 20%, 10%);*/
+    outline: none;
+    border: none;
+    width: 270px;
+    font-size: 16px;
+    color: black;
+    padding-left: 15px;
+    border-radius: 50px;
+}
+
+.icon {
+    width: 2em;
+    height: 1.5em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;;
+}
+
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+    -webkit-text-fill-color: #3D3D3D !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+table{
+    margin: 0px 50px 75px 100px;
+    height: 300px;
+    width: 900px;
+}
+
+table {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+table th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+    text-decoration: none;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+a:link, a:visited {
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: bisque;
+}
+
+/*添加*/
+.icon2 {
+    width: 2.5em;
+    height: 2.5em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+    
+
+

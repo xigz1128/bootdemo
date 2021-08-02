@@ -48,16 +48,16 @@ public class CartController {
         return "redirect:/cart/view.do";
     }
 
-    @GetMapping ("toDelete.do")
-    public String toDelete(HttpServletRequest request,String user_id,String dish_id){
-        cartService.deleteDish(user_id,dish_id);
-        return "redirect:/cart/view.do";
-    }
-
     @GetMapping ("toReduce.do")
     public String toReduce(HttpServletRequest request,String user_id,String dish_id,int amount){
         Cartvo cart = new Cartvo(user_id,dish_id,amount-1);
         cartService.updataAmount(cart);
+        return "redirect:/cart/view.do";
+    }
+
+    @GetMapping ("toDelete.do")
+    public String toDelete(HttpServletRequest request,String user_id,String dish_id){
+        cartService.deleteDish(user_id,dish_id);
         return "redirect:/cart/view.do";
     }
 

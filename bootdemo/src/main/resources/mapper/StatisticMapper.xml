@@ -1,11 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.bootdemo.mapper.StatisticMapper">
-    <select id="getOrder" resultType="Statistic">
-        SELECT d.dish_id,d.dish_name,d.price,COUNT(od.amount) amount,COUNT(od.amount)*d.price total
-FROM order_dishes od,dishes d
-WHERE od.dish_id = d.dish_id
-GROUP BY od.dish_id
+    <select id="getOrder" resultType="com.example.bootdemo.bean.Statistic">
+        SELECT od.dish_id as dish_id,p.dish_name as dish_name,p.price as price,SUM(od.amount) as SaleAmount,SUM(od.amount)*p.price as TotalSale,FORMAT(COUNT(od.amount)*p.profit,2) as Profit
+        FROM order_dishes od,(SELECT d.dish_id,d.dish_name,d.price,(d.price-sum(f.inprice*df.amount)) profit
+        FROM dishes d,foods f,dish_food df
+        WHERE df.food_id=f.food_id AND df.dish_id=d.dish_id
+        GROUP BY d.dish_id) p
+        WHERE od.dish_id=p.dish_id
+        GROUP BY od.dish_id
+    </select>
+    <select id="getList" resultType="Statistic">
+        SELECT
+        orders.order_id,
+        orders.user_id,
+        orders.amount,
+        orders.order_time,
+        orders.paytype
+        FROM
+        orders
+        WHERE
+        DATE_SUB(CURDATE(), INTERVAL 15 DAY) &lt;=date(order_time)
+        ORDER BY
+        order_time DESC
+    </select>
+    <select id="DaySale" resultType="String">
+     SELECT SUM(amount) as DaySale
+     FROM orders
+     WHERE TO_DAYS(order_time)=TO_DAYS(NOW())
+    </select>
+    <select id="DayProfit" resultType="String">
+   SELECT FORMAT(SUM(p.profit),2) DayProfit
+    FROM order_dishes od,orders o,(SELECT d.dish_id,d.dish_name,d.price,(d.price-sum(f.inprice*df.amount)) profit
+    FROM dishes d,foods f,dish_food df
+    WHERE df.food_id=f.food_id AND df.dish_id=d.dish_id
+    GROUP BY d.dish_id) p
+    WHERE TO_DAYS(o.order_time)=TO_DAYS(NOW()) AND od.order_id=o.order_id AND p.dish_id=od.dish_id
+    </select>
+    <select id="TotalSales" resultType="String">
+        SELECT SUM(tp.TotalSale) TotalSales
+        FROM (SELECT od.dish_id as dish_id,p.dish_name as dish_name,p.price as price,SUM(od.amount) as SaleAmount,SUM(od.amount)*p.price as TotalSale,COUNT(od.amount)*p.profit as Profit
+        FROM order_dishes od,(SELECT d.dish_id,d.dish_name,d.price,(d.price-sum(f.inprice*df.amount)) profit
+        FROM dishes d,foods f,dish_food df
+        WHERE df.food_id=f.food_id AND df.dish_id=d.dish_id
+        GROUP BY d.dish_id) p
+        WHERE od.dish_id=p.dish_id
+        GROUP BY od.dish_id) tp
+    </select>
 
+    <select id="TotalProfit" resultType="String">
+        SELECT FORMAT(SUM(tp.Profit),2) TotalProfit
+        FROM (SELECT od.dish_id as dish_id,p.dish_name as dish_name,p.price as price,SUM(od.amount) as SaleAmount,SUM(od.amount)*p.price as TotalSale,COUNT(od.amount)*p.profit as Profit
+        FROM order_dishes od,(SELECT d.dish_id,d.dish_name,d.price,(d.price-sum(f.inprice*df.amount)) profit
+        FROM dishes d,foods f,dish_food df
+        WHERE df.food_id=f.food_id AND df.dish_id=d.dish_id
+        GROUP BY d.dish_id) p
+        WHERE od.dish_id=p.dish_id
+        GROUP BY od.dish_id) tp
+    </select>
+    <select id="SaleHist" resultType="StaVo">
+        SELECT DATE_FORMAT(order_time,'%Y-%m-%d') SaleTime,SUM(amount) as WeeklySale
+        FROM orders
+        WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(order_time)
+        GROUP BY SaleTime
+        ORDER BY SaleTime
+    </select>
+    <select id="ProfitHist" resultType="StaVo">
+        SELECT DATE_FORMAT(o.order_time,'%Y-%m-%d') ProfitTime, FORMAT(SUM(p.profit),2) WeeklyProfit
+        FROM order_dishes od,orders o,(SELECT d.dish_id,d.dish_name,d.price,(d.price-sum(f.inprice*df.amount)) profit
+        FROM dishes d,foods f,dish_food df
+        WHERE df.food_id=f.food_id AND df.dish_id=d.dish_id
+        GROUP BY d.dish_id) p
+        WHERE  DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(order_time) AND od.order_id=o.order_id AND p.dish_id=od.dish_id
+        GROUP BY ProfitTime
+        ORDER BY ProfitTime
     </select>
 </mapper>

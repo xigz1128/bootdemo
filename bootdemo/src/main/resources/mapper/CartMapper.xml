@@ -18,7 +18,7 @@
     </resultMap>
 
     <delete id="deleteDish" parameterType="string">
-        DELETE FROM cart WHERE user_id=#{user_id} and dish_id = #{dish_id}
+        DELETE FROM cart WHERE user_id=#{user_id} and dish_id=#{dish_id}
     </delete>
 
     <update id="updataAmount" parameterType="Cartvo">
@@ -47,7 +47,9 @@
         update cart set amount=#{amount}-1 WHERE dish_id=#{dish_id}
     </update>
 
-
+    <delete id="deleteCartById" parameterType="String" >
+        delete from cart where user_id=#{id}
+	</delete>
 
 </mapper>
 
