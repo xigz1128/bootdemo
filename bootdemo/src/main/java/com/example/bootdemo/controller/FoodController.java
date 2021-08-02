@@ -1,6 +1,7 @@
 package com.example.bootdemo.controller;
 
 import com.example.bootdemo.bean.Food;
+import com.example.bootdemo.service.IDish_FoodService;
 import com.example.bootdemo.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ public class FoodController {
 
     @Autowired
     private IFoodService foodService;
+    @Autowired
+    private IDish_FoodService dish_foodService;
 
 
     //获得食物列表
@@ -34,6 +37,7 @@ public class FoodController {
         model.addAttribute("food",Food);
         return "food/updateFood";
     }
+
     //提交修改完毕的信息进数据库
     @PostMapping("updateFood")
     public String updateFood(Food food,Model model){
@@ -72,6 +76,7 @@ public class FoodController {
     //删除一条食物信息
     @GetMapping("deleteFood")
     public String deleteFood(String id){
+        dish_foodService.deleteDF(id);
         foodService.deleteFood(id);
         return "redirect:/stock/view.do";
     }

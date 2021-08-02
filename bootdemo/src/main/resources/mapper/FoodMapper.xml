@@ -38,4 +38,5 @@
         delete from foods where food_id=#{id}
     </delete>
 
+
 </mapper>
