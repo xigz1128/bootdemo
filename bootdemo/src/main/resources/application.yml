@@ -5,7 +5,7 @@ spring:
     url: jdbc:mysql://localhost:3306/data?useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
+    password: lgx123
 
 mybatis:
   type-aliases-package: com.example.bootdemo.bean

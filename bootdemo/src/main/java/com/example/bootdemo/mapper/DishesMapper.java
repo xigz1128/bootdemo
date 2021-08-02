@@ -10,5 +10,5 @@ import java.util.List;
 public interface DishesMapper {
     List<Dishes> showDishes();
     List<Dishes> selectContent(String content);
-
+    List<Cart> selectDish(String type);
 }

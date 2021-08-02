@@ -8,6 +8,6 @@ import java.util.List;
 public interface IDishesService {
     List<Dishes> showDishes();
     List<Dishes> selectContent(String content);
-
+    List<Cart> selectDish(String type);
 
 }

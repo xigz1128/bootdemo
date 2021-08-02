@@ -28,5 +28,26 @@
     <select id="addCart" resultType="Cart" parameterType="String">
         INSERT INTO cart VALUES (#{user_id},#{dish_id},1)
     </select>
+
+
+
+    <select id="selectCarts" resultType="Cart" parameterType="String">
+        SELECT * FROM cart WHERE dish_id =#{dish_id} AND user_id=#{user_id}
+    </select>
+
+    <insert id="addCarts" >
+        INSERT INTO cart VALUES (#{user_id},#{dish_id},1)
+    </insert>
+
+    <update id="updateCarts">
+        update cart set amount=#{amount}+1 WHERE dish_id=#{dish_id}
+    </update>
+
+    <update id="updateCarts2">
+        update cart set amount=#{amount}-1 WHERE dish_id=#{dish_id}
+    </update>
+
+
+
 </mapper>
 

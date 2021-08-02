@@ -1,0 +1,61 @@
+#navBar{
+    position: fixed;
+    left: 10px;
+    right: 0;
+
+    height: 80px;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;  /* 两端对齐 */
+
+    align-items: center; /* 垂直方向居中 */
+    color: black;
+}
+.navWrap{
+    display: flex;
+
+}
+.navWrap li{
+    font-style: 26px;
+    margin-right:40px;
+    cursor: pointer;
+}
+.navWrap li:hover,.navWrap span:hover{
+    color: #f9d163;
+}
+.navWrap li span.iconfont,.navWrap li span a.iconfont{
+    font-size: 26px;
+    margin-right: 5px;
+}
+/*.navWrap li span a.iconfont{*/
+/*    font-size: 26px;*/
+/*    margin-right: 5px;*/
+
+/*}*/
+
+.search{
+    width: 300px;
+    height: 30px;
+    box-sizing: border-box;/* 后面添加padding之类就不会受影响 */
+    display: flex;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.search input{
+    background: none;
+    border: none;
+    width: 270px;
+    font-size: 16px;
+    color: blue;
+    padding-left: 15px;
+    outline: none;
+}
+.search button{
+    width: 38px;
+    color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}

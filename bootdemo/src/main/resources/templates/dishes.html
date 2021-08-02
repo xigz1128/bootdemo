@@ -3,38 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>小小帅餐馆</title>
-    <script>
-        function myFunction()
-        {
-            alert("已加入购物车");
-        }
-    </script>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/dishes.css}">
+    <link rel="stylesheet" th:href="@{/css/navBar.css}">
+<!--    <link rel="preload" href="//at.alicdn.com/t/font_2707242_jxte40fisuj.woff2" as="font" type="font/woff2" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2707242_9fsd1csvhvq.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
+
+<script>
+    let message = $("#message").val();
+    if(message = 0){
+        layer.msg(message);
+    }
+</script>
+
+
+
 <body>
+    <input type="hidden" name="message" id="message" value="${message}">
+    <div id="wrap">
+        <div id="navBar">
+            <ul class="navWrap">
+                <li>
+                    <span class="iconfont"><a th:href="@{'/Dish/dishes.do'}">&#xe607;</a></span>
+                    <span class="text" ><a th:href="@{'/Dish/dishes.do'}">全部</a></span>
+                </li>
+                <li>
+                    <span class="iconfont"><a th:href="@{'/Dish/dishes2.do?type='+'正菜'}">&#xe601;</a></span>
+                    <span class="text" ><a th:href="@{'/Dish/dishes2.do?type='+'正菜'}">正菜</a></span>
+                </li>
+                <li>
+                    <span class="iconfont"><a th:href="@{'/Dish/dishes2.do?type='+'主食'}">&#xe60f;</a></span>
+                    <span class="text" ><a th:href="@{'/Dish/dishes2.do?type='+'主食'}">主食</a></span>
+                </li>
+                <li>
+                    <span class="iconfont"><a th:href="@{'/Dish/dishes2.do?type='+'凉菜'}">&#xe65d;</a></span>
+                    <span class="text"><a th:href="@{'/Dish/dishes2.do?type='+'凉菜'}">凉菜</a></span>
+                </li>
+                <li>
+                    <span class="iconfont"><a  th:href="@{'/Dish/dishes2.do?type='+'汤羹'}">&#xe8da;</a></span>
+                    <span class="text" ><a  th:href="@{'/Dish/dishes2.do?type='+'汤羹'}">汤羹</a></span>
+                </li>
+            </ul>
+            <form action="/Dish/content.do">
+                <div class="search">
+                        <input type="text" name="content" >
+                        <button>
+                            <span class="iconfont" >&#xe638;</span>
+                        </button>
+                </div>
+            </form>
+        </div>
 
-<form action="/Dish/content.do">
-    <input type="text" name="content">
-    <input type="submit" >
-</form>
 
-<table>
-    <tr>
-        <th>编号</th>
-        <th>菜名</th>
-        <th>价格</th>
-        <th>类型</th>
-        <th>描述</th>
-    </tr>
-    <tr th:each="dishes,Stat:${dishesList}">
-        <td th:text="${dishes.dish_id}"></td>
-        <td th:text="${dishes.dish_name}"></td>
-        <td th:text="${dishes.price}"></td>
-        <td th:text="${dishes.type}"></td>
-        <td th:text="${dishes.sketch}"></td>
-        <td>
-            <a th:href="@{'/cart/view?dish_id='+${dishes.dish_id}}" th:onclick="myFunction()">加入购物车</a>
-        </td>
-    </tr>
-</table>
+        </div>
+        <div id="content" >
+            <ul class="foodList" style=" overflow:scroll; width:100%; height:100%;">
+                <th:block th:each="dishes,Stat:${dishesList}">
+                    <li>
+                        <img th:src="@{/images/{id}(id=${dishes.dish_id}+'.png')}" alt="" />
+                        <div class="bar">
+                            <h3 th:text="${dishes.dish_name}"></h3>
+                            <P>
+                                <span class="rmb">RMB</span>
+                                <span class="price" th:text="${dishes.price}+'/份'"></span>
+                                <button>
+                                    <span class="iconfont"><a th:href="@{'/cart/views?dish_id='+${dishes.dish_id}}">&#xe602;</a></span>
+                                </button>
+                                <button>
+                                    <span class="iconfont"><a th:href="@{'/cart/views2?dish_id='+${dishes.dish_id}}">&#xe600;</a></span>
+                                </button>
+                            </P>
+                        </div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
