@@ -1,0 +1,184 @@
+
+body{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background: whitesmoke;
+    background-size: cover;
+}
+
+.Content-Main{
+    text-align: center;
+}
+.Content-Main h1{
+    padding: 8px 0px 40px 10px;
+    display: block;
+    border-bottom: 1px solid #444;
+}
+.text1{
+    margin-left: 3px;
+}
+.Content-Main div{
+    margin: 0px 0px 5px;
+    display: block;
+}
+.Content-Main div>label{
+    width: 20%;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.Content-Main input[type="text"]{
+    height: 25px;
+    width: 70%;
+    line-height: 15px;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    border: none;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    outline: 0 none;
+    background:  #DFDFDF;
+    color: #525252;
+}
+.Content-Main button{
+    padding: 8px 24px 8px 24px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFE477;
+    box-shadow: 1px 1px 1px  #3D3D3D;
+    -moz-box-shadow: 1px 1px 1px  #3D3D3D;
+    -webkit-box-shadow: 1px 1px 1px  #3D3D3D;
+    color: #3D3D3D;
+    background: #DFDFDF;
+}
+.Content-Main button:hover{
+    color:  #333;
+    background-color:  #EBEBEB ;
+}
+
+
+button.btn{
+    padding: 8px 24px 8px 24px;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 9999;
+    border: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px  #3D3D3D;
+    -moz-box-shadow: 1px 1px 1px  #3D3D3D;
+    -webkit-box-shadow: 1px 1px 1px  #3D3D3D;
+    color: #3D3D3D;
+    background: #DFDFDF;
+}
+button.btn:hover{
+    color:  #333;
+    background-color:  #EBEBEB ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,28 +4,39 @@
 
 </head>
 <title>更新食物信息</title>
+<link th:href="@{/css/user/addUser.css}" rel="stylesheet">
 <body>
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <form th:action="@{/updateFood}" method="post">
-        <div class="form-group">
-            <input th:value="${food.getFood_id()}" type="hidden" name="food_id" class="form-control">
-        </div>
-        <!--<input type="" name="id" th:value="${user.getUser_id()}">-->
-        <div class="form-group">
-            <label>Food_Name</label>
-            <input th:value="${food.getFood_name()}" type="text" name="food_name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Inprice</label>
-            <input th:value="${food.getInprice()}" type="text" name="inprice" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Stock</label>
-            <input th:value="${food.getStock()}" type="text" name="stock" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">修改</button>
-    </form>
+<main>
+    <div class="Content-Main">
+        <form th:action="@{/updateFood}" method="post">
+            <h1>食材信息</h1>
+            <span class="text1">请在文本框中修改食材信息：</span>
+            <p>
+
+            <div>
+                <input th:value="${food.getFood_id()}" type="hidden" name="food_id" class="form-control">
+            </div>
+
+            <div>
+                <label>Food_Name</label>
+                <input th:value="${food.getFood_name()}" type="text" name="food_name" class="form-control">
+            </div>
+
+            <div>
+                <label>Inprice</label>
+                <input th:value="${food.getInprice()}" type="text" name="inprice" class="form-control">
+            </div>
+
+            <div>
+                <label>Stock</label>
+                <input th:value="${food.getStock()}" type="text" name="stock" class="form-control">
+            </div>
+
+            <button type="submit">修改</button>
+
+        </form>
+    </div>
 </main>
 
 </body>

@@ -1,62 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Dashboard Template for Bootstrap</title>
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
-
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
+    <link th:href="@{/css/user/addUser.css}" rel="stylesheet">
 </head>
 
 
 <body>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <form th:action="@{/authorizationUser}" method="post">
-        <div class="form-group">
-            <label>UserId</label>
-            <input th:value="${user.getUser_id()}" type="text" name="user_id" class="form-control" placeholder="kuangshen">
-        </div>
-        <div class="form-group">
-            <label>RoleId</label>
-            <select class="form-control" name="role_id">
-                <option th:each="ur:${role}"
-                        th:text="${ur.getRole_name()}" th:value="${ur.getRole_id()}"></option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">授权</button>
-    </form>
+<main>
+    <div class="Content-Main">
+        <form th:action="@{/authorizationUser}" method="post">
+            <h1>个人信息</h1>
+            <span class="text1">请在文本框中选择您的角色：</span>
+            <p>
+
+            <div>
+                <label>UserId</label>
+                <input th:value="${user.getUser_id()}" type="text" name="user_id" class="form-control"
+                       placeholder="kuangshen">
+            </div>
+
+            <div>
+                <label>RoleId</label>
+                <select class="m-wrap" name="role_id" style="width: 782px; height: 35px;background-color: #DFDFDF;border: none;outline: none;padding: 2px 0;">
+                    <option th:each="ur:${role}"
+                            th:text="${ur.getRole_name()}" th:value="${ur.getRole_id()}" ></option>
+                </select>
+            </div>
+             <p>
+            <button type="submit">授权</button>
+
+        </form>
+    </div>
 </main>
 </body>
 </html>

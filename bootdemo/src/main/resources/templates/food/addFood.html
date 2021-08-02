@@ -4,29 +4,34 @@
 
 </head>
 <title>更新食物信息</title>
+<link th:href="@{/css/user/addUser.css}" rel="stylesheet">
 <body>
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <form th:action="@{/addFood}" method="post">
-        <div class="form-group">
-            <label>Food_Id</label>
-            <input  type="text" name="food_id" class="form-control" placeholder="f0001">
-        </div>
-        <!--<input type="" name="id" th:value="${user.getUser_id()}">-->
-        <div class="form-group">
-            <label>Food_Name</label>
-            <input  type="text" name="food_name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Inprice</label>
-            <input  type="text" name="inprice" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Stock</label>
-            <input  type="text" name="stock" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">添加</button>
-    </form>
+<main>
+    <div class="Content-Main">
+        <form th:action="@{/addFood}" method="post">
+                <h1>食材信息</h1>
+                <span class="text1">请在文本框中添加食材信息：</span>
+                <p>
+            <div>
+                <label>Food_Id</label>
+                <input type="text" name="food_id" class="form-control" placeholder="f0001">
+            </div>
+            <div>
+                <label>Food_Name</label>
+                <input type="text" name="food_name" class="form-control">
+            </div>
+            <div>
+                <label>Inprice</label>
+                <input type="text" name="inprice" class="form-control">
+            </div>
+            <div>
+                <label>Stock</label>
+                <input type="text" name="stock" class="form-control">
+            </div>
+            <button type="submit">添加</button>
+        </form>
+    </div>
 </main>
 
 </body>

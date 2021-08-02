@@ -26,6 +26,10 @@
     </where>
     </select>
 
+    <select id="getFood" resultType="Food" parameterType="String">
+        select * from foods where food_id=#{id}
+    </select>
+
     <update id="updateFood" parameterType="Food">
         update foods set food_name=#{food_name},inprice=#{inprice},stock=#{stock} where food_id=#{food_id}
     </update>

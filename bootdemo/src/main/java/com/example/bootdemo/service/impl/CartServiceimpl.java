@@ -35,4 +35,9 @@ public class CartServiceimpl   implements ICartService {
         return cartMapper.addCart(user_id,dish_id);
     }
 
+    @Override
+    public void deleteCartById(String id) {
+        cartMapper.deleteCartById(id);
+    }
+
 }

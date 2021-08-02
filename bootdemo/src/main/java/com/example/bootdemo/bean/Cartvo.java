@@ -3,11 +3,10 @@ package com.example.bootdemo.bean;
 public class Cartvo {
     private String user_id;
     private Integer amount;
+    private String dish_id;
 
     public Cartvo() {
     }
-
-    private String dish_id;
 
     public Cartvo(String user_id, String dish_id, Integer amount) {
         this.user_id = user_id;
