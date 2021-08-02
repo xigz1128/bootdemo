@@ -4,6 +4,7 @@ package com.example.bootdemo.service.impl;
 import com.example.bootdemo.bean.Cart;
 import com.example.bootdemo.bean.Dishes;
 import com.example.bootdemo.mapper.DishesMapper;
+import com.example.bootdemo.mapper.UserMapper;
 import com.example.bootdemo.service.IDishesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class DishesServiceimpl implements IDishesService {
     @Autowired
     private DishesMapper dishesMapper;
 
+
+
     @Override
     public List<Dishes> showDishes(){
         return dishesMapper.showDishes();
@@ -27,6 +30,12 @@ public class DishesServiceimpl implements IDishesService {
     public List<Dishes> selectContent(String content) {
 
         return dishesMapper.selectContent(content);
+    }
+
+    @Override
+    public List<Cart> selectDish(String type) {
+
+        return dishesMapper.selectDish(type);
     }
 
 }

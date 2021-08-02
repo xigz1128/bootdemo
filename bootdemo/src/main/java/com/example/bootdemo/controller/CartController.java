@@ -4,7 +4,10 @@ package com.example.bootdemo.controller;
 import com.example.bootdemo.bean.Cart;
 import com.example.bootdemo.bean.Cartvo;
 import com.example.bootdemo.bean.User;
+import com.example.bootdemo.mapper.CartMapper;
 import com.example.bootdemo.service.ICartService;
+import com.example.bootdemo.service.IDishesService;
+import com.example.bootdemo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.reactive.WebFluxProperties;
 import org.springframework.stereotype.Controller;
@@ -18,8 +21,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
+
     @Autowired
     public ICartService cartService;
+    @Autowired
+    public IDishesService dishesService;
+    @Autowired
+    private IUserService userService;
+
 
     @GetMapping("view.do")
     public String toCartForm(HttpSession session, HttpServletRequest request){
@@ -57,5 +66,41 @@ public class CartController {
         User user= (User) session.getAttribute("user");
         cartService.addCart(user.getUser_id(),dish_id);
         return "redirect:/Dish/dishes.do";
+    }
+
+
+    @GetMapping("/views")
+    private String seeCarts(HttpSession session,String dish_id,HttpServletRequest request){
+
+        User user = (User) session.getAttribute("user");
+        cartService.selectCarts(user.getUser_id(),dish_id);
+
+        request.setAttribute("dishesList",dishesService.showDishes());
+        return "dishes";
+
+    }
+
+    @GetMapping("/views2")
+    private String delectCarts(HttpSession session,String dish_id,HttpServletRequest request){
+
+        User user = (User) session.getAttribute("user");
+        cartService.deleteCarts(user.getUser_id(),dish_id);
+
+//        CartMapper cartMapper = null;
+//
+//        List<Cart> cartList=cartMapper.selectCarts(user_id,dish_id);
+
+//        if (cartList.size()==0){
+//            int message = cartList.get(0).getAmount();;
+//            request.setAttribute("message","用户名或密码错误!");
+//
+//        }else {
+//
+//            //int amount = cartList.getAmount() + 1;
+//            cartMapper.updateCarts2(cartList.get(0).getAmount(),dish_id);
+//        }
+
+        request.setAttribute("dishesList",dishesService.showDishes());
+        return "dishes";
     }
 }

@@ -25,4 +25,8 @@
             </if>
         </where>
     </select>
+
+    <select id="selectDish" resultType="Dishes" parameterType="String">
+        SELECT * FROM dishes WHERE type LIKE '%${type}%'
+    </select>
 </mapper>
